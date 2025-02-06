@@ -2,7 +2,9 @@ import Header from './Comonents/Header';
 import './App.css';
 import ChatInput from './Comonents/ChatInput/ChatInput'; 
 import React, { Component } from 'react';
-import { sendMsg } from './api';
+import { connect,sendMsg } from './api';
+// import Message from './Comonents/Message';
+import ChatHistory from './Comonents/ChatHistory';
 
 class App extends Component {
   constructor(props) {
@@ -15,6 +17,16 @@ class App extends Component {
     this.send = this.send.bind(this);
   }
 
+  componentDidMount(){
+    connect((msg)=>{
+      console.log("NEw message rom user");
+      this.setState(prevState =>({
+        chatHistory:[...prevState.chatHistory, msg]
+
+      }))
+      console.log(this.state);
+    })
+  }
   send(event) {
     if (event.keyCode === 13) {
       sendMsg(event.target.value);
@@ -26,6 +38,8 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
+        <ChatHistory chatHistory={this.state.chatHistory}/>
+        
         <ChatInput send={this.send} />
       </div>
     );

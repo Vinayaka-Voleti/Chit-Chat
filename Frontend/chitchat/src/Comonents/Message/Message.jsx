@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import './Message.scss'
 
-class message extends Component{
+class Message extends Component{
     constructor(props){
         super(props);
         let temp = JSON.parse(this.props.message);
@@ -17,3 +17,4 @@ class message extends Component{
         );
     }
 }
+export default Message;
