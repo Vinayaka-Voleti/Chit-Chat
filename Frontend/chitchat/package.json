@@ -34,6 +34,8 @@
     ]
   },
   "devDependencies": {
-    "sass": "^1.83.4"
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "sass": "^1.83.4",
+    "sass-loader": "^12.0.0"
   }
 }
